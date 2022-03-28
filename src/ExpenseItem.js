@@ -1,15 +1,12 @@
 import './ExpenseItem.css';
 
-function ExpenseItem() {
-	const date = new Date();
-	const someTitle = 'tiiiiittle here';
-
+function ExpenseItem(props) {
 	return (
 		<div className='expense-item'>
-			<span>{ date.toISOString() }</span>
+			<span>{ props.date.toLocaleDateString() }</span>
 			<div className='expense-item__description'>
-				<h2>{ someTitle }</h2>
-				<span className='expense-item__price'>{ Math.random() }</span>
+				<h2>{ props.title }</h2>
+				<span className='expense-item__price'>{ props.amount }</span>
 			</div>
 		</div>
 	);
