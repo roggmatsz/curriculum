@@ -1,9 +1,10 @@
 import './App.css';
+import ExpenseItem from './ExpenseItem';
 
 function App() {
   return (
     <div className="App">
-      Root here
+      <ExpenseItem />
     </div>
   );
 }
