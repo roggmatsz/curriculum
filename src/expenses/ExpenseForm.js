@@ -29,6 +29,7 @@ function ExpenseForm(props) {
 	const onFormSubmit = (event) => {
 		event.preventDefault();
 		console.log(formState);
+		setFormState({title: '', amount: '', date: ''});
 	};
 
 	return (
@@ -36,15 +37,15 @@ function ExpenseForm(props) {
 			<div className="new-expense__controls">
 				<div className="new-expense__control">
 					<label>Title</label>
-					<input type="text" onChange={onTitleChange} />
+					<input type="text" value={formState.title} onChange={onTitleChange} />
 				</div>
 				<div className="new-expense__control">
 					<label>Amount</label>
-					<input onChange={onAmountChange} type="number" min="0.01" step="0.1" />
+					<input onChange={onAmountChange} value={formState.amount} type="number" min="0.01" step="0.1" />
 				</div>
 				<div className="new-expense__control">
 					<label>Date</label>
-					<input onChange={onDatechange} type="date" min="2019-01-01" max="2022-12-31" />
+					<input onChange={onDatechange} value={formState.date} type="date" min="2019-01-01" max="2022-12-31" />
 				</div>
 			</div>
 			<div className="new-expense__actions">
