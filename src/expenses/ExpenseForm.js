@@ -28,7 +28,7 @@ function ExpenseForm(props) {
 
 	const onFormSubmit = (event) => {
 		event.preventDefault();
-		console.log(formState);
+		props.onSavedExpense(formState);
 		setFormState({title: '', amount: '', date: ''});
 	};
 

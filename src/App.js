@@ -25,10 +25,14 @@ function App() {
     },
   ];
 
+  const onNewExpenseHandler = (expense) => {
+    console.log(expense);
+  }
+
   return (
     <div className="App">
       <h2>List of Expenses</h2>
-      <NewExpense />
+      <NewExpense onNewExpense={onNewExpenseHandler} />
       <Expenses list={expenses} />
     </div>
   );
