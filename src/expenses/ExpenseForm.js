@@ -9,23 +9,20 @@ function ExpenseForm(props) {
 	});
 
 	const onTitleChange = (event) => {
-		setFormState({ 
-			...formState,
-			title: event?.target?.value
+		setFormState((previousState) => {
+			return { ...previousState, title: event?.target?.value };
 		});
 	};
 
 	const onAmountChange = (event) => {
-		setFormState({ 
-			...formState,
-			amount: event?.target?.value
+		setFormState((previousState) => {
+			return { ...previousState, amount: event?.target?.value };
 		});
 	}
 
 	const onDatechange = (event) => {
-		setFormState({ 
-			...formState,
-			date: event?.target?.value
+		setFormState((previousState) => {
+			return { ...previousState, date: event?.target?.value };
 		});
 	}
 
