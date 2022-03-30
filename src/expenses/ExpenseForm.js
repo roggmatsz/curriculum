@@ -26,8 +26,13 @@ function ExpenseForm(props) {
 		});
 	}
 
+	const onFormSubmit = (event) => {
+		event.preventDefault();
+		console.log(formState);
+	};
+
 	return (
-		<form>
+		<form onSubmit={onFormSubmit}>
 			<div className="new-expense__controls">
 				<div className="new-expense__control">
 					<label>Title</label>
