@@ -6,7 +6,7 @@ import ExpensesFilter from './ExpenseFilter';
 
 function Expenses(props) {
 	const [ selectedFilter, setSelectedFilter ] = useState('2020');
-	let filteredExpenses = props.list.filter(expense => 
+	const filteredExpenses = props.list.filter(expense => 
 		expense?.date?.getFullYear().toString() === selectedFilter);
 
 	const onSelectedFilterHander = (value) => {
@@ -16,7 +16,10 @@ function Expenses(props) {
 	return (
 		<Card className='expenses'>
 			<ExpensesFilter selected={selectedFilter} onSelectedFilter={onSelectedFilterHander} />
-			{filteredExpenses.map(item =>
+			
+			{filteredExpenses.length === 0 && <p>No expenses found.</p>}
+			
+			{filteredExpenses.length > 0 && filteredExpenses.map(item => 
 				<ExpenseItem key={item.id} title={item.title} amount={item.amount} date={item.date} />
 			)}
 		</Card>
