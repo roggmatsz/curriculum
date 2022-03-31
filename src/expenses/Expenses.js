@@ -15,9 +15,10 @@ function Expenses(props) {
 	
 	return (
 		<Card className='expenses'>
-			{props.list.map(item =>
-				<ExpenseItem title={item.title} amount={item.amount} date={item.date} />
-			)}
+			<ExpensesFilter />
+			{ props.list.map(item =>
+				<ExpenseItem key={item.id} title={item.title} amount={item.amount} date={item.date} />
+			) }
 		</Card>
 	);
 }
