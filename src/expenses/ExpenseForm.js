@@ -30,7 +30,8 @@ function ExpenseForm(props) {
 		event.preventDefault();
 		props.onSavedExpense({
 			...formState,
-			date: new Date(formState.date)
+			date: new Date(formState.date),
+			amount: +formState.amount
 		});
 		setFormState({title: '', amount: '', date: ''});
 	};
