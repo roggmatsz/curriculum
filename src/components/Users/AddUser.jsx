@@ -17,7 +17,7 @@ export default function AddUser(props) {
          return;
       }
 
-      console.log(enteredAge, enteredUsername);
+      props.onAddUser(enteredUsername, enteredAge);
 
       setEnteredUsername('');
       setEnteredAge('');
