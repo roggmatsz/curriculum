@@ -9,7 +9,19 @@ export default function AddUser(props) {
 
    const onFormSubmit = (event) => {
       event.preventDefault();
+
+      if (enteredUsername.trim().length === 0) {
+         return;
+      }
+
+      if (+enteredAge < 1) {
+         return;
+      }
+      
       console.log(enteredAge, enteredUsername);
+
+      setEnteredUsername('');
+      setEnteredAge('');
    };
 
    const onUsernameChange = (event) => {
@@ -24,9 +36,9 @@ export default function AddUser(props) {
       <Card className={styles.input}>
          <form onSubmit={onFormSubmit}>
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" onChange={onUsernameChange} />
+            <input type="text" id="username" value={enteredUsername} onChange={onUsernameChange} />
             <label htmlFor="age">Age (years)</label>
-            <input type="number" id="age" onChange={onAgeChange} />
+            <input type="number" id="age" value={enteredAge} onChange={onAgeChange} />
             <Button type="submit">Submit</Button>
          </form>
       </Card>
