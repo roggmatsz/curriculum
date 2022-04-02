@@ -1,16 +1,20 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Card from '../ui/Card';
 import ErrorModal from '../ui/ErrorModal';
 import Button from '../ui/Button';
 import styles from './AddUser.module.css';
 
 export default function AddUser(props) {
-   const [ enteredUsername, setEnteredUsername ] = useState('');
-   const [ enteredAge, setEnteredAge ] = useState('');
+   const nameInputRef = useRef();
+   const ageInputRef = useRef();
+
    const [ error, setError ] = useState();
 
    const onFormSubmit = (event) => {
       event.preventDefault();
+
+      const enteredUsername = nameInputRef.current.value;
+      const enteredAge = ageInputRef.current.value;
 
       if (enteredUsername.trim().length === 0 &&
           enteredAge.trim().length === 0) {
@@ -30,17 +34,9 @@ export default function AddUser(props) {
 
       props.onAddUser(enteredUsername, enteredAge);
 
-      setEnteredUsername('');
-      setEnteredAge('');
+      nameInputRef.current.value = '';
+      ageInputRef.current.value = '';
    };
-
-   const onUsernameChange = (event) => {
-      setEnteredUsername(event?.target?.value);
-   }
-
-   const onAgeChange = (event) => {
-      setEnteredAge(event?.target?.value);
-   }
 
    const errorHandler = () => {
       setError(null);
@@ -52,9 +48,9 @@ export default function AddUser(props) {
          <Card className={styles.input}>
             <form onSubmit={onFormSubmit}>
                <label htmlFor="username">Username</label>
-               <input type="text" id="username" value={enteredUsername} onChange={onUsernameChange} />
+               <input ref={nameInputRef} type="text" id="username" />
                <label htmlFor="age">Age (years)</label>
-               <input type="number" id="age" value={enteredAge} onChange={onAgeChange} />
+               <input ref={ageInputRef} type="number" id="age" />
                <Button type="submit">Submit</Button>
             </form>
          </Card>
